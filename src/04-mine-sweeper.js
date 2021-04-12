@@ -22,26 +22,41 @@
  * ]
  */
 function minesweeper(matrix) {
-    const result = [];
-    for (let i = 0; i < matrix.length; i++) {
-        const row = [];
-        for (let k = 0; k < matrix[i].length; k++) {
-            let count = 0;
-            count += matrix[i][k + 1] ? 1 : 0;
-            count += matrix[i][k - 1] ? 1 : 0;
-            count += matrix[i + 1] && matrix[i + 1][k] ? 1 : 0;
-            count += matrix[i - 1] && matrix[i - 1][k] ? 1 : 0;
-            count += matrix[i - 1] && matrix[i - 1][k - 1] ? 1 : 0;
-            count += matrix[i - 1] && matrix[i - 1][k + 1] ? 1 : 0;
-            count += matrix[i + 1] && matrix[i + 1][k - 1] ? 1 : 0;
-            count += matrix[i + 1] && matrix[i + 1][k + 1] ? 1 : 0;
-            row.push(count);
-        }
-
-        result.push(row);
+  let z = 0;
+  const s = [];
+  for (let i = 0; i < matrix.length; i++) {
+    const res = [];
+    for (let y = 0; y < matrix[0].length; y++) {
+      z = 0;
+      if (matrix[i][y + 1]) {
+        z++;
+      }
+      if (matrix[i][y - 1]) {
+        z++;
+      }
+      if (matrix[i + 1] && matrix[i + 1][y]) {
+        z++;
+      }
+      if (matrix[i - 1] && matrix[i - 1][y]) {
+        z++;
+      }
+      if (matrix[i - 1] && matrix[i - 1][y - 1]) {
+        z++;
+      }
+      if (matrix[i - 1] && matrix[i - 1][y + 1]) {
+        z++;
+      }
+      if (matrix[i + 1] && matrix[i + 1][y - 1]) {
+        z++;
+      }
+      if (matrix[i + 1] && matrix[i + 1][y + 1]) {
+        z++;
+      }
+      res.push(z);
     }
-
-    return result;
+    s.push(res);
+  }
+  return s;
 }
 
 module.exports = minesweeper;
